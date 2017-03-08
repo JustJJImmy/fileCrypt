@@ -5,8 +5,15 @@
 
 #include <windows.h>
 #include <shellapi.h>
-
+#include <QDebug>
 #include "DataEncrypt.h"
+
+#define __STDC_CONSTANT_MACROS
+
+extern "C" {
+#include "libavcodec/avcodec.h"
+}
+
 
 namespace {
 	static QString lastPath = ".";
@@ -50,6 +57,8 @@ FileEncrypt::FileEncrypt(QWidget *parent)
 
 	connect(btnEnCrypt, SIGNAL(clicked()), this, SLOT(btnEnCryptClick()));
 	connect(btnDeCrypt, SIGNAL(clicked()), this, SLOT(btnDeCryptClick()));
+
+	qDebug() << QString().fromLocal8Bit(avcodec_configuration());
 
 }
 
