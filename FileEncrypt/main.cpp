@@ -20,6 +20,7 @@ extern "C" {
 
 int main(int argc, char *argv[])
 {
+	/*
 	//  ffmpeg test ------------------------------
 	av_register_all() ;
 
@@ -37,9 +38,9 @@ int main(int argc, char *argv[])
 		return 0;
 	}
 
-	// 时长
+	// 脢卤鲁陇
 	qDebug() << "time:" << pFormatctx->duration;
-	// 封装格式
+	// 路芒脳掳赂帽脢陆
 	qDebug() << "format:" << pFormatctx->iformat->name<<", long name:"<< pFormatctx->iformat->long_name;
 
 	if ( avformat_find_stream_info(pFormatctx, NULL) < 0)
@@ -201,24 +202,9 @@ int main(int argc, char *argv[])
 
 
 
-
-
-
-
-	/*
-	char *buffer;
-	while (1){
-
-	forread buffer;
-
-	}
-	*/
-
-	// -------------------------------
-
-	return 0;
-    /*QApplication a(argc, argv);
+	return 0;*/
+    QApplication a(argc, argv);
     FileEncrypt w;
     w.show();
-    return a.exec();*/
+    return a.exec();
 }
