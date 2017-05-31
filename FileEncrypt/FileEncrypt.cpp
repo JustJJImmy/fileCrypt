@@ -55,8 +55,19 @@ FileEncrypt::FileEncrypt(QWidget *parent)
 	btnDeCrypt->setText("解密");
 	btnDeCrypt->setGeometry(QRect(20, 120, 80, 40));
 
+	btnDataDecrypt = new QPushButton(this);
+	btnDataDecrypt->setText("数据解密");
+	btnDataDecrypt->setGeometry(QRect(20, 200, 80, 40));
+
+	datainput = new QLineEdit(this);
+	datainput->setGeometry(QRect(20, 250, width() - 40, 30));
+
+	dataDecryptOut = new QLabel(this);
+	dataDecryptOut->setGeometry(QRect(20, 280, width() - 40, 30));
+
 	connect(btnEnCrypt, SIGNAL(clicked()), this, SLOT(btnEnCryptClick()));
 	connect(btnDeCrypt, SIGNAL(clicked()), this, SLOT(btnDeCryptClick()));
+	connect(btnDataDecrypt, SIGNAL(clicked()), this, SLOT(btnDataDeCryptClick()));
 
 	qDebug() << QString().fromLocal8Bit(avcodec_configuration());
 
@@ -139,4 +150,13 @@ void FileEncrypt::btnDeCryptClick() {
 }
 
 
+void FileEncrypt::btnDataDeCryptClick() {
+	QString dataToDecrypt = datainput->text();
+	if (dataToDecrypt.count() <= 0 ){
+		return;
+	}
+	QString plainData = messageDecryption(dataToDecrypt);
 
+	dataDecryptOut->setText(plainData);
+
+}
